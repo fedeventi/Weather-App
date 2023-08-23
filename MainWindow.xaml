@@ -6,16 +6,35 @@
         xmlns:local="clr-namespace:Weather_App"
         mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
         Title="MainWindow" Height="450" Width="300" Background="Transparent" >
+    <Window.Resources>
+
+        <ControlTemplate x:Key="GetRidMouseOver" TargetType="{x:Type Button}">
+            <Border x:Name="Border" Background="{TemplateBinding Background}" >
+                <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center">
+
+                </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkOrange" TargetName="Border"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="Transparent" TargetName="Border"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Border CornerRadius="35" BorderThickness="0" Background="Orange">
-        
+
         <Grid>
-        
+
             <Border x:Name="titlebar" Background="Transparent"  Height="60" VerticalAlignment="Top" CornerRadius="25">
             </Border>
-            
-        
+
+
             <Canvas>
-                
+
                 <TextBox x:Name="City" Text="Set your city"
                      
                      Width="200"
@@ -26,55 +45,49 @@
                      Padding="10,0,0,0"
                      FontSize="20"
                      BorderThickness="0">
-                    
+
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="20" />
                         </Style>
-                    </TextBox.Resources> 
+                    </TextBox.Resources>
                 </TextBox>
-                
-                <Button x:Name="minimize" Click="Minimize"
-                    Height="35"
-                    Width="30"
-                    Canvas.Top="25"
-                    Canvas.Right="40"
-                    Background="Transparent"
-                    BorderThickness="0">
-                    <TextBlock Text="_"></TextBlock>
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Style.Triggers>
 
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="red">
-                                        
-                                    </Setter>
-                                    
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Button x:Name="close" Click="Close"
-                    BorderThickness="0"
-                    Height="35"
-                    Width="30"
-                    Canvas.Top="25"
-                    Background="Transparent"
-                    Canvas.Right="10">
-                    <TextBlock Text="X"></TextBlock>
-                    <Button.Style>
-                        <Style>
+
+                <Button x:Name="minimize" Click="Minimize"
+                        Height="35"
+                        Width="35"
+                        Canvas.Top="0"
+                        Canvas.Right="40"
+                        Background="Transparent"
+                        BorderThickness="0" HorizontalAlignment="Left" Canvas.Left="230" VerticalAlignment="Center">
+                    <TextBlock Text="_" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}" >
                             <Style.Triggers>
-                                <Trigger Property="Button.IsMouseOver" Value="True">
-                                    <Setter Property="Button.Background" Value="red">
-                                    </Setter>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Red" ></Setter>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
                 </Button>
+
+
+                <Border CornerRadius="25"/>
+                <Button x:Name="close" Click="Close"
+                        BorderThickness="0"
+                        Height="34"
+                        Width="35"
+                        
+                        Background="Transparent"
+                            Template="{StaticResource GetRidMouseOver}"
+                        Canvas.Right="10" Canvas.Left="265" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                        <TextBlock Text="X" HorizontalAlignment="Center"/>
+
+
+                    </Button>
+                
             </Canvas>
 
         </Grid>
