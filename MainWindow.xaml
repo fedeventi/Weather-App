@@ -59,6 +59,7 @@
                         Width="35"
                         Canvas.Top="0"
                         Canvas.Right="40"
+                        Template="{StaticResource GetRidMouseOver}"
                         Background="Transparent"
                         BorderThickness="0" HorizontalAlignment="Left" Canvas.Left="230" VerticalAlignment="Center">
                     <TextBlock Text="_" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -79,9 +80,8 @@
                         BorderThickness="0"
                         Height="34"
                         Width="35"
-                        
                         Background="Transparent"
-                            Template="{StaticResource GetRidMouseOver}"
+                        Template="{StaticResource GetRidMouseOver}"
                         Canvas.Right="10" Canvas.Left="265" HorizontalAlignment="Center" VerticalAlignment="Top" >
                         <TextBlock Text="X" HorizontalAlignment="Center"/>
 
