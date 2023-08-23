@@ -46,5 +46,15 @@ namespace Weather_App
 
            // suggestionMenu.IsOpen = true;
         }
+
+        private void minimize_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void close_MouseEnter(object sender, MouseEventArgs e)
+        {
+            close.Background = Brushes.DarkOrange;
+        }
     }
 }
