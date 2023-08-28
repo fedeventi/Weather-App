@@ -147,7 +147,7 @@
                         </RadialGradientBrush>
                     </Border.Background>
                     <Border.Effect>
-                        <DropShadowEffect BlurRadius="20" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.5" ></DropShadowEffect>
+                        <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
                     </Border.Effect>
                     <Border
                         Background="#75ffffff"
@@ -173,7 +173,7 @@
                         </RadialGradientBrush>
                     </Border.Background>
                     <Border.Effect>
-                        <DropShadowEffect BlurRadius="20" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.5" ></DropShadowEffect>
+                        <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
                     </Border.Effect>
                     <Border
                         Background="#75ffffff"
