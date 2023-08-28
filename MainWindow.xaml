@@ -75,7 +75,7 @@
                 </Button>
 
 
-                
+
                 <Button x:Name="close" Click="Close"
                         BorderThickness="0"
                         Height="34"
@@ -86,7 +86,7 @@
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="0,35,0,0">
-                                
+
                             </Setter>
                         </Style>
                     </Button.Resources>
@@ -94,17 +94,99 @@
 
 
                 </Button>
-               
-               <Button x:Name="Search"
+
+                <Button x:Name="Search"
                        Height="35"
                        Width="35"
-                       BorderThickness="5"
+                       Background="white"
+                       BorderThickness="0"
+                       Canvas.Top="40" Canvas.Left="255" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Search_Click"
                        >
-                   
-                   
-                                   
-               </Button>
-        
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="35"></Setter>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+
+                <TextBlock Text="25° C"
+                           FontSize="50" 
+                           Width="280" 
+                           Canvas.Left="10" 
+                           Canvas.Top="225"
+                           TextAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top"
+                           Foreground="OrangeRed"
+                           >
+
+
+                </TextBlock>
+                <TextBlock Text="Some Clouds" 
+                           Canvas.Left="10" 
+                           Canvas.Top="292" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top"
+                           FontSize="20"
+                           TextAlignment="Center" Width="280"
+                           Foreground="OrangeRed"
+                           >
+
+                </TextBlock>
+                <Border
+                    Height="54"
+                    Width="105"
+                    Canvas.Top="376" Canvas.Left="20"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    CornerRadius="15">
+                    <Border.Background>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Orange" Offset="0.85"></GradientStop>
+                            <GradientStop Color="#ff000000" Offset="3"></GradientStop>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.5" ></DropShadowEffect>
+                    </Border.Effect>
+                    <Border
+                        Background="#75ffffff"
+                        CornerRadius="15,0,0,15" Margin="6,5,93,8"
+                        >
+                        <Border.Effect>
+                            <BlurEffect Radius="15" ></BlurEffect>
+                        </Border.Effect>
+                    </Border>
+
+
+                </Border>
+                <Border
+                    Height="54"
+                    Width="104"
+                    Canvas.Top="376" Canvas.Left="168"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    CornerRadius="15">
+                    <Border.Background>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Orange" Offset="0.85"></GradientStop>
+                            <GradientStop Color="#ff000000" Offset="3"></GradientStop>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.5" ></DropShadowEffect>
+                    </Border.Effect>
+                    <Border
+                        Background="#75ffffff"
+                        CornerRadius="15,0,0,15" Margin="6,5,93,8"
+                        >
+                        <Border.Effect>
+                            <BlurEffect Radius="15" ></BlurEffect>
+                        </Border.Effect>
+                    </Border>
+
+
+                </Border>
+
 
             </Canvas>
 
