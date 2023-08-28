@@ -37,14 +37,14 @@
 
                 <TextBox x:Name="City" Text="Set your city"
                      
-                     Width="200"
+                     Width="230"
                      Height="35"
-                     Canvas.Left="20"
-                     Canvas.Top="25"
+                     Canvas.Left="10"
+                     Canvas.Top="40"
                      Foreground="Gray"
                      Padding="10,0,0,0"
                      FontSize="20"
-                     BorderThickness="0">
+                     BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center">
 
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -75,7 +75,7 @@
                 </Button>
 
 
-                <Border CornerRadius="25"/>
+                
                 <Button x:Name="close" Click="Close"
                         BorderThickness="0"
                         Height="34"
@@ -83,11 +83,29 @@
                         Background="Transparent"
                         Template="{StaticResource GetRidMouseOver}"
                         Canvas.Right="10" Canvas.Left="265" HorizontalAlignment="Center" VerticalAlignment="Top" >
-                        <TextBlock Text="X" HorizontalAlignment="Center"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0,35,0,0">
+                                
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <TextBlock Text="X" HorizontalAlignment="Center"/>
 
 
-                    </Button>
-                
+                </Button>
+               
+               <Button x:Name="Search"
+                       Height="35"
+                       Width="35"
+                       BorderThickness="5"
+                       >
+                   
+                   
+                                   
+               </Button>
+        
+
             </Canvas>
 
         </Grid>
