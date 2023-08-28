@@ -40,9 +40,10 @@
                      Width="230"
                      Height="35"
                      Canvas.Left="10"
+                     Background="#FFFFE5B6"
                      Canvas.Top="40"
                      Foreground="Gray"
-                     Padding="10,0,0,0"
+                     Padding="10,5,0,0"
                      FontSize="20"
                      BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center">
 
@@ -51,6 +52,9 @@
                             <Setter Property="CornerRadius" Value="20" />
                         </Style>
                     </TextBox.Resources>
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.2"></DropShadowEffect>
+                    </TextBox.Effect>
                 </TextBox>
 
 
@@ -98,7 +102,7 @@
                 <Button x:Name="Search"
                        Height="35"
                        Width="35"
-                       Background="white"
+                       Background="#FFFFE5B6"
                        BorderThickness="0"
                        Canvas.Top="40" Canvas.Left="255" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Search_Click"
                        >
@@ -107,8 +111,14 @@
                             <Setter Property="CornerRadius" Value="35"></Setter>
                         </Style>
                     </Button.Resources>
-
+                    <Button.Effect>
+                        <DropShadowEffect Opacity="0.3"></DropShadowEffect>
+                    </Button.Effect>
                 </Button>
+                <Image Width="200"
+                       Height="124"
+                       Canvas.Left="50" Canvas.Top="100" />
+
 
                 <TextBlock Text="25° C"
                            FontSize="50" 
@@ -118,9 +128,11 @@
                            TextAlignment="Center" 
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Top"
-                           Foreground="OrangeRed"
+                           Foreground="White"
                            >
-
+                    <TextBlock.Effect>
+                        <DropShadowEffect Opacity="0.3" />
+                    </TextBlock.Effect>
 
                 </TextBlock>
                 <TextBlock Text="Some Clouds" 
@@ -130,8 +142,11 @@
                            VerticalAlignment="Top"
                            FontSize="20"
                            TextAlignment="Center" Width="280"
-                           Foreground="OrangeRed"
+                           Foreground="White"
                            >
+                    <TextBlock.Effect>
+                        <DropShadowEffect Opacity="0.3" />
+                    </TextBlock.Effect>
 
                 </TextBlock>
                 <Border
