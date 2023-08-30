@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Weather_App.MainWindow"
+        x:Name="window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -24,6 +25,12 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        <Storyboard x:Key="showWin">
+            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.6" To="450" />
+        </Storyboard>
+        <Storyboard x:Key="hideWin">
+            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.6" To="100"/>
+        </Storyboard>
     </Window.Resources>
     <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="Orange">
 

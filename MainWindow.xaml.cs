@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -21,6 +22,7 @@ namespace Weather_App
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -33,11 +35,16 @@ namespace Weather_App
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
-        void Resize(bool resize)
-        {
-            if (resize) Application.Current.MainWindow.Height= 100;
-            else Application.Current.MainWindow.Height = 450;
-        }
+         void Resize(bool expand)
+         {
+            
+            Storyboard showWin = (Storyboard)this.Resources["showWin"];
+            Storyboard hideWin = (Storyboard)this.Resources["hideWin"];
+            BeginStoryboard(expand?showWin:hideWin);
+            
+
+            
+         }
         void Close(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -62,11 +69,12 @@ namespace Weather_App
         {
             close.Background = Brushes.DarkOrange;
         }
-        bool resize;
+        bool _expand;
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            resize = !resize;
-            Resize(!resize);
+            _expand = !_expand;
+            Resize(!_expand);
         }
     }
+    
 }
