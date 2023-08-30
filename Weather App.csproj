@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="sun.png" />
+    <None Remove="Images\sun.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="sun.png" />
+    <Resource Include="Images\sun.png" />
   </ItemGroup>
 
 </Project>

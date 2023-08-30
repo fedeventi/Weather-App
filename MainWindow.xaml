@@ -117,7 +117,7 @@
                 </Button>
                 <Image Width="200"
                        Height="124"
-                       Canvas.Left="50" Canvas.Top="100" Source="/Images/sun.png" />
+                       Canvas.Left="47" Canvas.Top="94" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/sun.png"/>
 
 
                 <TextBlock Text="25° C"
