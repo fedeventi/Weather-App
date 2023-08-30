@@ -25,7 +25,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Resources>
-    <Border CornerRadius="35" BorderThickness="0" Background="Orange">
+    <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="Orange">
 
         <Grid>
 
@@ -117,7 +117,7 @@
                 </Button>
                 <Image Width="200"
                        Height="124"
-                       Canvas.Left="50" Canvas.Top="100" />
+                       Canvas.Left="50" Canvas.Top="100" Source="/Images/sun.png" />
 
 
                 <TextBlock Text="25° C"
