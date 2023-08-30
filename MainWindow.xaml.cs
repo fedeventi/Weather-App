@@ -28,8 +28,9 @@ namespace Weather_App
             InitializeComponent();
             titlebar.MouseDown += TitleBar_MouseDown;
             City.TextChanged += TextHasChanged;
-
+            SetUpWindow();
         }
+        
         void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -64,12 +65,16 @@ namespace Weather_App
         {
 
         }
+        void SetUpWindow()
+        {
+            Application.Current.MainWindow.Height = 100;
+        }
 
         private void close_MouseEnter(object sender, MouseEventArgs e)
         {
             close.Background = Brushes.DarkOrange;
         }
-        bool _expand;
+        bool _expand=true;
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             _expand = !_expand;

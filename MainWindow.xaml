@@ -26,10 +26,10 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Storyboard x:Key="showWin">
-            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.6" To="450" />
+            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="450" />
         </Storyboard>
         <Storyboard x:Key="hideWin">
-            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.6" To="100"/>
+            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="100"/>
         </Storyboard>
     </Window.Resources>
     <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="Orange">
