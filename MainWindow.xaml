@@ -25,6 +25,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
         <Storyboard x:Key="showWin">
             <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="450" />
         </Storyboard>
@@ -62,9 +63,21 @@
                     <TextBox.Effect>
                         <DropShadowEffect Opacity="0.2"></DropShadowEffect>
                     </TextBox.Effect>
+
                 </TextBox>
 
-                
+                <Border x:Name="ComboBoxOpacityMask" CornerRadius="25" Height="35" Width="230" Background="#FFFFE5B6" Canvas.Left="10" Canvas.Top="40"/>
+
+                <ComboBox ItemsSource="{Binding Models}" SelectedItem="{Binding Model}" 
+ IsEditable="True" StaysOpenOnEdit="True" Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="230" Canvas.Left="10" Canvas.Top="40" Height="34" >
+                    <ComboBox.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=ComboBoxOpacityMask}"/>
+                    </ComboBox.OpacityMask>
+
+                </ComboBox>
+
+
+
 
                 <Button x:Name="minimize" Click="Minimize"
                         Height="35"
