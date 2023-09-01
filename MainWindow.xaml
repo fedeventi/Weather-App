@@ -64,6 +64,7 @@
                     </TextBox.Effect>
                 </TextBox>
 
+                
 
                 <Button x:Name="minimize" Click="Minimize"
                         Height="35"
