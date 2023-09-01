@@ -27,22 +27,22 @@
         </ControlTemplate>
 
         <Storyboard x:Key="showWin">
-            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="450" />
+            <DoubleAnimation Storyboard.TargetName="Body" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="450" />
         </Storyboard>
         <Storyboard x:Key="hideWin">
-            <DoubleAnimation Storyboard.TargetName="window" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="100"/>
+            <DoubleAnimation Storyboard.TargetName="Body" Storyboard.TargetProperty="Height" Duration="0:0:0.3" To="100"/>
         </Storyboard>
     </Window.Resources>
-    <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="Orange">
+    <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="Orange" VerticalAlignment="Top">
 
         <Grid>
 
-            <Border x:Name="titlebar" Background="Transparent"  Height="60" VerticalAlignment="Top" CornerRadius="25">
+            <Border x:Name="titlebar" Background="Transparent"  Height="450" VerticalAlignment="Top" CornerRadius="25">
             </Border>
 
 
-            <Canvas>
-                
+            <Canvas x:Name="mainCanvas">
+
 
 
 
@@ -103,12 +103,16 @@
                         <DropShadowEffect Opacity="0.3"></DropShadowEffect>
                     </Button.Effect>
                 </Button>
-                <Image Width="200"
-                       Height="124"
-                       Canvas.Left="47" Canvas.Top="94" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/sun.png"/>
+                <StackPanel Name="content" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="450">
+
+                    <Image Width="125"
+                       Height="125"
+                       HorizontalAlignment="Center" 
+                       Margin="50,100,50,0"
+                       Source="Images/sun.png"/>
 
 
-                <TextBlock Text="25° C"
+                    <TextBlock Text="25° C"
                            FontSize="50" 
                            Width="280" 
                            Canvas.Left="10" 
@@ -118,12 +122,12 @@
                            VerticalAlignment="Top"
                            Foreground="White"
                            >
-                    <TextBlock.Effect>
-                        <DropShadowEffect Opacity="0.3" />
-                    </TextBlock.Effect>
+                        <TextBlock.Effect>
+                            <DropShadowEffect Opacity="0.3" />
+                        </TextBlock.Effect>
 
-                </TextBlock>
-                <TextBlock Text="Some Clouds" 
+                    </TextBlock>
+                    <TextBlock Text="Some Clouds" 
                            Canvas.Left="10" 
                            Canvas.Top="292" 
                            HorizontalAlignment="Center" 
@@ -132,64 +136,64 @@
                            TextAlignment="Center" Width="280"
                            Foreground="White"
                            >
-                    <TextBlock.Effect>
-                        <DropShadowEffect Opacity="0.3" />
-                    </TextBlock.Effect>
+                        <TextBlock.Effect>
+                            <DropShadowEffect Opacity="0.3" />
+                        </TextBlock.Effect>
 
-                </TextBlock>
-                <Border
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="30,50,30,30">
+
+                        <Border
                     Height="54"
-                    Width="105"
-                    Canvas.Top="376" Canvas.Left="20"
-                    HorizontalAlignment="Center" VerticalAlignment="Top"
-                    CornerRadius="15">
-                    <Border.Background>
-                        <RadialGradientBrush>
-                            <GradientStop Color="Orange" Offset="0.85"></GradientStop>
-                            <GradientStop Color="#ff000000" Offset="3"></GradientStop>
-                        </RadialGradientBrush>
-                    </Border.Background>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
-                    </Border.Effect>
-                    <Border
+                    Width="105" 
+                    CornerRadius="15" HorizontalAlignment="Left">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Orange" Offset="0.85"></GradientStop>
+                                    <GradientStop Color="#ff000000" Offset="3"></GradientStop>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
+                            </Border.Effect>
+                            <Border
                         Background="#75ffffff"
                         CornerRadius="15,0,0,15" Margin="6,5,93,8"
                         >
-                        <Border.Effect>
-                            <BlurEffect Radius="15" ></BlurEffect>
-                        </Border.Effect>
-                    </Border>
+                                <Border.Effect>
+                                    <BlurEffect Radius="15" ></BlurEffect>
+                                </Border.Effect>
+                            </Border>
 
 
-                </Border>
-                <Border
+                        </Border>
+                        <Border
                     Height="54"
                     Width="104"
-                    Canvas.Top="376" Canvas.Left="168"
-                    HorizontalAlignment="Left" VerticalAlignment="Center"
-                    CornerRadius="15">
-                    <Border.Background>
-                        <RadialGradientBrush>
-                            <GradientStop Color="Orange" Offset="0.85"></GradientStop>
-                            <GradientStop Color="#ff000000" Offset="3"></GradientStop>
-                        </RadialGradientBrush>
-                    </Border.Background>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
-                    </Border.Effect>
-                    <Border
+                    CornerRadius="15" HorizontalAlignment="Right" Margin="30,0,0,0" >
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Orange" Offset="0.85"></GradientStop>
+                                    <GradientStop Color="#ff000000" Offset="3"></GradientStop>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
+                            </Border.Effect>
+                            <Border
                         Background="#75ffffff"
                         CornerRadius="15,0,0,15" Margin="6,5,93,8"
                         >
-                        <Border.Effect>
-                            <BlurEffect Radius="15" ></BlurEffect>
-                        </Border.Effect>
-                    </Border>
+                                <Border.Effect>
+                                    <BlurEffect Radius="15" ></BlurEffect>
+                                </Border.Effect>
+                            </Border>
 
 
-                </Border>
-                <Border Width="230" Height="60" Background="#FFFFE5B6" CornerRadius="20" Canvas.Left="10" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+                <Border Name="dropdown" Width="230" Height="35" Background="#FFFFE5B6" CornerRadius="20" Canvas.Left="10" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.2"></DropShadowEffect>
                     </Border.Effect>
@@ -215,11 +219,7 @@
 
 
                 </TextBox>
-                <Line
-                X1="20" Y1="73"
-                X2="230" Y2="73"
-                Stroke="DarkOrange"
-                StrokeThickness="1" />
+
 
 
             </Canvas>
