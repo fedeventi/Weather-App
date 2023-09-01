@@ -42,40 +42,7 @@
 
 
             <Canvas>
-
-                <TextBox x:Name="City" Text="Set your city"
-                     
-                     Width="230"
-                     Height="35"
-                     Canvas.Left="10"
-                     Background="#FFFFE5B6"
-                     Canvas.Top="40"
-                     Foreground="Gray"
-                     Padding="10,5,0,0"
-                     FontSize="20"
-                     BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="20" />
-                        </Style>
-                    </TextBox.Resources>
-                    <TextBox.Effect>
-                        <DropShadowEffect Opacity="0.2"></DropShadowEffect>
-                    </TextBox.Effect>
-
-                </TextBox>
-
-                <Border x:Name="ComboBoxOpacityMask" CornerRadius="25" Height="35" Width="230" Background="#FFFFE5B6" Canvas.Left="10" Canvas.Top="40"/>
-
-                <ComboBox ItemsSource="{Binding Models}" SelectedItem="{Binding Model}" 
- IsEditable="True" StaysOpenOnEdit="True" Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="230" Canvas.Left="10" Canvas.Top="40" Height="34" >
-                    <ComboBox.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=ComboBoxOpacityMask}"/>
-                    </ComboBox.OpacityMask>
-
-                </ComboBox>
-
+                
 
 
 
@@ -222,6 +189,37 @@
 
 
                 </Border>
+                <Border Width="230" Height="60" Background="#FFFFE5B6" CornerRadius="20" Canvas.Left="10" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.2"></DropShadowEffect>
+                    </Border.Effect>
+                </Border>
+
+                <TextBox x:Name="City" Text="Set your city"  GotFocus="City_OnFocus" TextChanged="City_TextChanged"   LostFocus="City_LostFocus"
+                     
+                     Width="230"
+                     Height="35"
+                     Canvas.Left="10"
+                     Background="#FFFFE5B6"
+                     Canvas.Top="40"
+                     Foreground="Gray"
+                     Padding="10,5,0,0"
+                     FontSize="20"
+                     BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center" >
+
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </TextBox.Resources>
+
+
+                </TextBox>
+                <Line
+                X1="20" Y1="73"
+                X2="230" Y2="73"
+                Stroke="DarkOrange"
+                StrokeThickness="1" />
 
 
             </Canvas>

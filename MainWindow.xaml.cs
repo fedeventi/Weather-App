@@ -80,6 +80,21 @@ namespace Weather_App
             _expand = !_expand;
             Resize(!_expand);
         }
+
+        private void City_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void City_OnFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox text = (TextBox)sender;
+            text.Clear();
+        }
+        private void City_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox text= (TextBox)sender;
+            if (text.Text.Length <= 0) text.Text = "Set your city";
+        }
     }
     
 }
