@@ -23,10 +23,12 @@ namespace Weather_App
     public partial class MainWindow : Window
     {
         List<Line> lines=new List<Line>();
-       
+        public string defaultLine = "Set your city";
         public MainWindow()
         {
+
             InitializeComponent();
+            DataContext = this;
             titlebar.MouseDown += TitleBar_MouseDown;
             SetUpWindow();
         }
@@ -75,17 +77,21 @@ namespace Weather_App
         {
             close.Background = Brushes.DarkOrange;
         }
-        bool _expand=true;
+        
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _expand = !_expand;
-            Resize(!_expand);
-            //CreateLines(4, 35);
+            
+            
+            CreateLines(4, 35);
         }
 
         private void City_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            TextBox textbox = (TextBox)sender;
+            if(textbox.Text.Length < 3 || textbox.Text==defaultLine)
+                Resize(false);
+            else
+                Resize(true);
         }
         private void City_OnFocus(object sender, RoutedEventArgs e)
         {

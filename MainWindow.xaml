@@ -103,11 +103,9 @@
                     <DropShadowEffect Opacity="0.3"></DropShadowEffect>
                 </Button.Effect>
             </Button>
-            <Border Name="dropdown" Width="230" Height="77" Background="#FFFFE5B6" CornerRadius="20"  HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="40">
-                <Border.Effect>
-                    <DropShadowEffect Opacity="0.2"></DropShadowEffect>
-                </Border.Effect>
-            </Border>
+            
+            
+            
             <StackPanel Name="content" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="450" >
 
                 <StackPanel.OpacityMask>
@@ -203,7 +201,7 @@
             </StackPanel>
 
 
-            <TextBox x:Name="City" Text="Set your city"  GotFocus="City_OnFocus" TextChanged="City_TextChanged"   LostFocus="City_LostFocus"
+            <TextBox x:Name="City" Text="{Binding defaultLine}"  GotFocus="City_OnFocus" TextChanged="City_TextChanged"   LostFocus="City_LostFocus"
                      
                      Width="230"
                      Height="35"
@@ -221,7 +219,9 @@
                     </Style>
                 </TextBox.Resources>
 
-
+                <TextBox.Effect>
+                    <DropShadowEffect Opacity=".2"></DropShadowEffect>
+                </TextBox.Effect>
             </TextBox>
 
 
