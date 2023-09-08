@@ -119,7 +119,8 @@
                        Source="Images/sun.png"/>
 
 
-                <TextBlock Text="25° C"
+                <TextBlock x:Name="Temperature"
+                           Text="25° C"
                            FontSize="50" 
                            Width="280" 
                            Canvas.Left="10" 

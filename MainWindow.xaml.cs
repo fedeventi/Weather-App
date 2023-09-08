@@ -14,6 +14,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Timers;
+using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace Weather_App
 {
@@ -23,16 +28,54 @@ namespace Weather_App
     public partial class MainWindow : Window
     {
         List<Line> lines=new List<Line>();
+        Stopwatch stopwatch;
+        DispatcherTimer timer;
         public string defaultLine = "Set your city";
         public MainWindow()
         {
-
+            isOpen = false;
             InitializeComponent();
             DataContext = this;
+            stopwatch=new Stopwatch();
+            stopwatch.Start();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(0.8f);
+            timer.Tick += UpdateData;
+            timer.Start();
+            
             titlebar.MouseDown += TitleBar_MouseDown;
             SetUpWindow();
         }
-        
+        public async void GetWeatherData()
+        {
+            HttpClient Client = new HttpClient();
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
+                "https://api.openweathermap.org/data/2.5/forecast?lat=-34.61315&lon=-58.37723&units=metric&appid=c79704f3754bff6163aa126fc6de2111");
+
+
+            HttpResponseMessage response = await Client.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+
+                return;
+            }
+
+            HttpContent body = response.Content;
+            string result = await body.ReadAsStringAsync();
+
+            dynamic weatherResult = JsonConvert.DeserializeObject(result);
+            Temperature.Text = weatherResult.list[0].main.temp;
+        }
+        public void UpdateData(object sender, EventArgs e)
+        {
+            TimeSpan timePass = stopwatch.Elapsed;
+            string formattedTime = string.Format("{0:D2}:{1:D2}:{2:D2}", timePass.Hours, timePass.Minutes, timePass.Seconds);
+            if(isOpen)
+                GetWeatherData();
+           
+           
+        }
         void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -44,6 +87,7 @@ namespace Weather_App
             Storyboard showWin = (Storyboard)this.Resources["showWin"];
             Storyboard hideWin = (Storyboard)this.Resources["hideWin"];
             BeginStoryboard(expand?showWin:hideWin);
+            isOpen = true;
             
 
             
@@ -107,7 +151,7 @@ namespace Weather_App
         private void CreateLines(int amount, int gap)
         {
             ClearLines(lines);
-            if(!isOpen)
+            
             for (int i = 0; i < amount; i++)
             {
                 Line gradientLine = new Line();
@@ -129,7 +173,7 @@ namespace Weather_App
                 lines.Add(gradientLine);
                 mainCanvas.Children.Add(gradientLine);
             }
-            isOpen = !isOpen;
+            
         }
         private void ClearLines(List<Line> lines)
         {
