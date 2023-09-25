@@ -103,9 +103,9 @@
                     <DropShadowEffect Opacity="0.3"></DropShadowEffect>
                 </Button.Effect>
             </Button>
-            
-            
-            
+
+
+
             <StackPanel Name="content" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="450" >
 
                 <StackPanel.OpacityMask>
@@ -214,6 +214,7 @@
                 </Border.Effect>
 
             </Border>
+
             <TextBox x:Name="City" Text="{Binding defaultLine}"  GotFocus="City_OnFocus" TextChanged="City_TextChanged"   LostFocus="City_LostFocus"
                      
                      Width="230"
@@ -234,9 +235,9 @@
                     </Style>
                 </TextBox.Resources>
 
-               
+
             </TextBox>
-            
+           
 
 
 
