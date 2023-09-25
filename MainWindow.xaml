@@ -87,7 +87,7 @@
 
             </Button>
 
-            <Button x:Name="Search"
+            <Button x:Name="_search"
                        Height="35"
                        Width="35"
                        Background="#FFFFE5B6"

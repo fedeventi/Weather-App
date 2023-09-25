@@ -19,6 +19,7 @@ using Newtonsoft.Json;
 using System.Timers;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.Reflection;
 
 namespace Weather_App
 {
@@ -30,13 +31,16 @@ namespace Weather_App
         
         List<UIElement> UIElements=new List<UIElement>();
         Stopwatch stopwatch;
+        bool search;
         DispatcherTimer timer;
+        Controller _controller;
         string _searchedCity;
         public string defaultLine = "Set your city";
         public MainWindow()
         {
             isOpen = false;
             InitializeComponent();
+            _controller= new Controller(this);
             City.DataContext = this;
             stopwatch=new Stopwatch();
             stopwatch.Start();
@@ -127,7 +131,17 @@ namespace Weather_App
         private void Search_Click(object sender, RoutedEventArgs e)
         {
 
-           
+            Search();
+        }
+        public void Search()
+        {
+            /*TextBlock _textblock = border.Child as TextBlock;
+            _searchedCity = _textblock.Text;
+            City.Text = _searchedCity;*/
+            if (UIElements.Count < 1) return;
+            City.Text = UIElements.Where(x => x is TextBlock).Select(x=>((TextBlock)x).Text).ToList()[_index];
+            Resize(true);
+            OpenDropdown(false);
         }
 
       
@@ -137,9 +151,16 @@ namespace Weather_App
             TextBox textbox = (TextBox)sender;
             _searchedCity = textbox.Text;
             if (textbox.Text.Length < 3 || textbox.Text == defaultLine)
+            {
+                _search.IsEnabled = false;
                 OpenDropdown(false);
+                Resize(false);
+            }
             else
+            {
                 OpenDropdown(true);
+                _search.IsEnabled = true;
+            }
         }
         private void City_OnFocus(object sender, RoutedEventArgs e)
         {
@@ -178,6 +199,16 @@ namespace Weather_App
             }
             
         }
+        private void DarkenBackground(object sender, RoutedEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = (Brush)new BrushConverter().ConvertFromString("#AAAAA5B6");
+        }
+        private void LightenBackground(object sender, RoutedEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = (Brush)new BrushConverter().ConvertFromString("#FFFFE5B6");
+        }
         private void ClearLines(List<Line> lines)
         {
             foreach (var item in lines)
@@ -205,10 +236,11 @@ namespace Weather_App
 
             }
         }
+
         void CreateSuggestion(bool show)
         {
             List<string> suggestionsList = new List<string>() { "Monte Grande", "San Francisco", "Los Angeles","Monte Chingolo", "Monte Paraiso"};
-            var results = suggestionsList.Where(word => word.ToLower().Contains(_searchedCity.ToLower())).Take(20);
+            var results = suggestionsList.Where(word => word.ToLower().Contains(_searchedCity.ToLower())).Take(10);
 
             for (int i = 0; i <results.ToList().Count; i++)
             {
@@ -231,14 +263,60 @@ namespace Weather_App
                 border.VerticalAlignment = VerticalAlignment.Top;
                 border.CornerRadius = i < results.ToList().Count - 1 ?new CornerRadius(0): new CornerRadius(0,0,20,20) ;
                 Canvas.SetTop(_suggestion, 35 *(i+2));
+                border.MouseEnter += DarkenBackground;
+                border.MouseLeave += LightenBackground;
+                border.MouseDown += (sender,e)=> {
+                    TextBlock _textblock = border.Child as TextBlock;
+                    _searchedCity = _textblock.Text;
+                    City.Text = _searchedCity;
+                };
+                border.Child = _suggestion;
                 UIElements.Add(_suggestion);
                 UIElements.Add(border);
                 mainCanvas.Children.Add(border);
-                mainCanvas.Children.Add(_suggestion);
+                //mainCanvas.Children.Add(_suggestion);
                 
             }
 
         }
+        
+        int _index = 0;
+        bool _indexFirstUse= true;
+        public void NavigateList(Key k)
+        {
+            //UIElements
+            var list= UIElements.Where(x => x is Border).ToList();
+            if (list.Count <= 0) return;
+            if (_indexFirstUse)
+            {
+                _indexFirstUse = false;
+                DarkenBackground(list[_index], null);
+                return;
+            }
+            if(k is Key.Up)
+            {
+                if (_index > 0)
+                    _index--;
+                else
+                    _index = list.Count - 1;
+            }
+            else if(k is Key.Down)
+            {
+                if (_index < list.Count - 1)
+                    _index++;
+                else
+                    _index = 0;
+            }
+            DarkenBackground(list[_index],null);
+            for(int i=0; i<list.Count;i++)
+            {
+                if (i == _index) continue;
+                LightenBackground(list[i], null);
+            }
+            
+
+        }
+
         void ClearUIElements(List<UIElement> suggestions)
         {
             foreach (var item in suggestions)
