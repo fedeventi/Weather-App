@@ -201,7 +201,19 @@
                 </StackPanel>
             </StackPanel>
 
+            <Border x:Name="suggestion" 
+                    Height="35" 
+                    Width="230"
+                    Background="#FFFFE5B6"
+                    Canvas.Left="10"
+                    Canvas.Top="40"
+                    CornerRadius="20"
+                    >
+                <Border.Effect>
+                    <DropShadowEffect Opacity=".2"></DropShadowEffect>
+                </Border.Effect>
 
+            </Border>
             <TextBox x:Name="City" Text="{Binding defaultLine}"  GotFocus="City_OnFocus" TextChanged="City_TextChanged"   LostFocus="City_LostFocus"
                      
                      Width="230"
@@ -212,6 +224,8 @@
                      Foreground="Gray"
                      Padding="10,5,0,0"
                      FontSize="20"
+                     FontStyle="Normal"
+                     FontWeight="Normal"
                      BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center" >
 
                 <TextBox.Resources>
@@ -220,10 +234,9 @@
                     </Style>
                 </TextBox.Resources>
 
-                <TextBox.Effect>
-                    <DropShadowEffect Opacity=".2"></DropShadowEffect>
-                </TextBox.Effect>
+               
             </TextBox>
+            
 
 
 

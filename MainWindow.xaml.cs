@@ -28,14 +28,16 @@ namespace Weather_App
     public partial class MainWindow : Window
     {
         List<Line> lines=new List<Line>();
+        List<TextBlock> suggestions=new List<TextBlock>();
         Stopwatch stopwatch;
         DispatcherTimer timer;
+        string _searchedCity;
         public string defaultLine = "Set your city";
         public MainWindow()
         {
             isOpen = false;
             InitializeComponent();
-            DataContext = this;
+            City.DataContext = this;
             stopwatch=new Stopwatch();
             stopwatch.Start();
             timer = new DispatcherTimer();
@@ -124,18 +126,20 @@ namespace Weather_App
         
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            CreateLines(4, 35);
+
+           
         }
+
+      
 
         private void City_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textbox = (TextBox)sender;
-            if(textbox.Text.Length < 3 || textbox.Text==defaultLine)
-                Resize(false);
+            _searchedCity = textbox.Text;
+            if (textbox.Text.Length < 3 || textbox.Text == defaultLine)
+                OpenDropdown(false);
             else
-                Resize(true);
+                OpenDropdown(true);
         }
         private void City_OnFocus(object sender, RoutedEventArgs e)
         {
@@ -151,8 +155,7 @@ namespace Weather_App
         private void CreateLines(int amount, int gap)
         {
             ClearLines(lines);
-            
-            for (int i = 0; i < amount; i++)
+            for (int i =0; i < amount; i++)
             {
                 Line gradientLine = new Line();
                 gradientLine.StrokeThickness = 1;
@@ -165,8 +168,8 @@ namespace Weather_App
                 gradientBrush.StartPoint = new Point(0, 0.5f);
                 gradientBrush.EndPoint = new Point(1, 0.5f);
                 gradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 0));
-                gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkOrange, 0.3f));
-                gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkOrange, 0.7f));
+                gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkOrange, 0.1f));
+                gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkOrange, 0.9f));
                 gradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
 
                 gradientLine.Stroke = gradientBrush;
@@ -186,7 +189,50 @@ namespace Weather_App
         }
         private void OpenDropdown(bool open)
         {
-            
+                ClearLines(lines);
+                ClearSuggestion(suggestions);
+            if (open)
+            {
+                CreateSuggestion(true);
+                suggestion.Height = 35 * (suggestions.Count+1);
+                CreateLines(suggestions.Count, 35);
+            }
+            else
+            {
+                suggestion.Height = 35;
+
+            }
+        }
+        void CreateSuggestion(bool show)
+        {
+            List<string> suggestionsList = new List<string>() { "Monte Grande", "San Francisco", "Los Angeles","Monte Chingolo", "Monte Paraiso" };
+            var results = suggestionsList.Where(word => word.ToLower().Contains(_searchedCity.ToLower())).Take(4);
+
+            for (int i = 0; i <results.ToList().Count; i++)
+            {
+                TextBlock _suggestion = new TextBlock();
+                _suggestion.Text = results.ToList()[i];
+                _suggestion.FontSize = 20;
+                _suggestion.Padding = new Thickness(21, 5, 0, 0);
+                _suggestion.VerticalAlignment = VerticalAlignment.Center;
+                _suggestion.FontWeight= FontWeights.Normal;
+                _suggestion.FontStyle = FontStyles.Normal;
+                _suggestion.Foreground = Brushes.Gray;
+                _suggestion.HorizontalAlignment = HorizontalAlignment.Left;
+                Canvas.SetTop(_suggestion, 35 *(i+2));
+                suggestions.Add(_suggestion);
+                mainCanvas.Children.Add(_suggestion);
+            }
+
+        }
+        void ClearSuggestion(List<TextBlock> suggestions)
+        {
+            foreach (var item in suggestions)
+            {
+                if (mainCanvas.Children.Contains(item))
+                    mainCanvas.Children.Remove(item);
+            }
+            suggestions.Clear();
         }
     }
     
