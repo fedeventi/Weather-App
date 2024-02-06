@@ -8,5 +8,8 @@ namespace Weather_App
 {
     internal class DataBaseOperations
     {
+        BaseContext _db= new BaseContext();
+        
+        
     }
 }
