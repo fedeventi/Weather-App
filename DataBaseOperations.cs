@@ -8,13 +8,25 @@ using System.Threading.Tasks;
 
 namespace Weather_App
 {
-    internal class DataBaseOperations
+    public class DataBaseOperations
     {
         BaseContext _db= new BaseContext();
         
         public void Get()
         {
-            _db.WorldCities.ToList();
+            //try
+            //{
+
+            //    using (var context = new BaseContext())
+            //    {
+
+                    
+                   Console.WriteLine(_db.Database.GetDbConnection().State);
+
+                    // Comprobar state
+            //    }
+            //}
+            //catch(Exception ex) { Console.WriteLine("no me pude conectar"); }
         }
         
         public void Get_Returns_Cities()
