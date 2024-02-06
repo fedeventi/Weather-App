@@ -10,32 +10,35 @@ namespace Weather_App
 {
     public class DataBaseOperations
     {
-        BaseContext _db= new BaseContext();
         
         public void Get()
         {
-            //try
-            //{
+            var options = new DbContextOptionsBuilder<BaseContext>().UseMySQL("server=localhost;database=world;user=root;password=fedeventi25").Options;
 
-            //    using (var context = new BaseContext())
-            //    {
+            try
+            {
+
+                using (var context = new BaseContext(options))
+                {
+
+                    var result = context.cities.Where(x => x.Country == "Argentina").Select(x => x.City).ToList();
+                    foreach (var city in result) 
+                        Console.WriteLine(city);
+
 
                     
-                   Console.WriteLine(_db.Database.GetDbConnection().State);
-
-                    // Comprobar state
-            //    }
-            //}
-            //catch(Exception ex) { Console.WriteLine("no me pude conectar"); }
+                }
+            }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
-        
+
         public void Get_Returns_Cities()
         {
-            
 
-            using var context = new BaseContext();
-            context.WorldCities.Add(new WorldCities { City = "Buenos Aires" });
-            Console.WriteLine(context.WorldCities.ToList().Where(x=>x.Country=="Argentina"));
+            var options = new DbContextOptionsBuilder<BaseContext>().UseMySQL("server=localhost;database=world;user=root;password=fedeventi25").Options;
+            using var context = new BaseContext(options);
+            context.cities.Add(new WorldCities { City = "Buenos Aires" });
+            Console.WriteLine(context.cities.ToList().Where(x=>x.Country=="Argentina"));
 
         }
     }
