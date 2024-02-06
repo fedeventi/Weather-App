@@ -30,6 +30,7 @@ namespace Weather_App
             {
                 _myWindow.Search();
                 Keyboard.ClearFocus();
+                
             }
         }
     }
