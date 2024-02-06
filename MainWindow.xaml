@@ -18,7 +18,7 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkOrange" TargetName="Border"/>
+                    <Setter Property="Background" Value="cyan" TargetName="Border"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="False">
                     <Setter Property="Background" Value="Transparent" TargetName="Border"></Setter>
@@ -37,7 +37,7 @@
 
     <Grid>
 
-        <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="Orange" VerticalAlignment="Top" Height="450" />
+        <Border x:Name="Body" CornerRadius="35" BorderThickness="0" Background="#222222" VerticalAlignment="Top" Height="450" />
         <Border x:Name="titlebar" Background="Transparent"  Height="40" VerticalAlignment="Top" CornerRadius="25"/>
 
 
@@ -94,6 +94,10 @@
                        BorderThickness="0"
                        Canvas.Top="40" Canvas.Left="255" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Search_Click"
                        >
+
+
+
+
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="35"></Setter>
@@ -112,11 +116,18 @@
                     <VisualBrush Visual="{Binding ElementName=Body}" Stretch="None" AlignmentY="Top" Viewbox="147,103,0,0" AlignmentX="Center" ViewboxUnits="Absolute"  >
                     </VisualBrush>
                 </StackPanel.OpacityMask>
-                <Image Width="125"
+                <Image Name="mainImage"
+                       Width="125"
                        Height="125"
                        HorizontalAlignment="Center" 
                        Margin="50,100,50,0"
-                       Source="Images/sun.png"/>
+                       Source="Images/sun cloud.png">
+                    <Image.Effect>
+                        <DropShadowEffect Opacity="0.3">
+
+                        </DropShadowEffect>
+                    </Image.Effect>
+                </Image>
 
 
                 <TextBlock x:Name="Temperature"
@@ -157,21 +168,24 @@
                             CornerRadius="15" HorizontalAlignment="Left">
                         <Border.Background>
                             <RadialGradientBrush>
-                                <GradientStop Color="Orange" Offset="0.85"></GradientStop>
-                                <GradientStop Color="#ff000000" Offset="3"></GradientStop>
+                                <GradientStop Color="#303030" Offset="0.85"></GradientStop>
+                                <!--<GradientStop Color="#ff000000" Offset="3"></GradientStop>-->
                             </RadialGradientBrush>
                         </Border.Background>
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
                         </Border.Effect>
-                        <Border
+                        <!--<Border
                                 Background="#75ffffff"
                                 CornerRadius="15,0,0,15" Margin="6,5,93,8">
                             <Border.Effect>
                                 <BlurEffect Radius="15" ></BlurEffect>
                             </Border.Effect>
-                        </Border>
-
+                        </Border>-->
+                        <Path Data="  M21, 22C18, 22, 14, 21, 14, 16, 14, 8, 19, 7, 21, 0, 23, 7, 28, 8, 28, 16, 28, 20, 25, 22, 21, 22Z "
+                                Fill="Transparent"
+                                Stroke="White"
+                                StrokeThickness="1" Stretch="Uniform" Height="28" Margin="44,13,49,13" />
 
                     </Border>
                     <Border
@@ -179,22 +193,22 @@
                             Width="104"
                             CornerRadius="15" HorizontalAlignment="Right" Margin="30,0,0,0" >
                         <Border.Background>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Orange" Offset="0.85"></GradientStop>
-                                <GradientStop Color="#ff000000" Offset="3"></GradientStop>
+                            <RadialGradientBrush >
+                                <GradientStop Color="#303030" Offset="0.85"></GradientStop>
+                                <!--<GradientStop Color="#ff000000" Offset="3"></GradientStop>-->
                             </RadialGradientBrush>
                         </Border.Background>
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="10" Direction="-45" ShadowDepth="5" Color="black" Opacity="0.3" ></DropShadowEffect>
-                        </Border.Effect>
-                        <Border
+                        <!--<Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="-0" ShadowDepth="0" Color="black" Opacity="0.6" ></DropShadowEffect>
+                        </Border.Effect>-->
+                        <!--<Border
                                 Background="#75ffffff"
                                 CornerRadius="15,0,0,15" Margin="6,5,93,8"
                                 >
                             <Border.Effect>
                                 <BlurEffect Radius="15" ></BlurEffect>
                             </Border.Effect>
-                        </Border>
+                        </Border>-->
 
 
                     </Border>
@@ -237,7 +251,7 @@
 
 
             </TextBox>
-           
+
 
 
 
