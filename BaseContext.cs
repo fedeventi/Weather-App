@@ -12,7 +12,7 @@ namespace Weather_App
         public DbSet<WorldCities> WorldCities { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("Server=localhost;port=3306;Database=myDatabase;User Id=root;Password=fedeventi25;database=world");
+            optionsBuilder.UseMySQL("Server=localhost;port=3306;Database=world;User Id=root;Password=fedeventi25");
         }
 
     }
