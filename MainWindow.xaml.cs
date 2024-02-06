@@ -36,6 +36,8 @@ namespace Weather_App
         Controller _controller;
         string _searchedCity;
         public string defaultLine = "Set your city";
+        float _lat= -34.61315f;
+        float _long= -58.37723f;
         public MainWindow()
         {
             isOpen = false;
@@ -57,7 +59,7 @@ namespace Weather_App
             HttpClient Client = new HttpClient();
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                "https://api.openweathermap.org/data/2.5/forecast?lat=-34.61315&lon=-58.37723&units=metric&appid=c79704f3754bff6163aa126fc6de2111");
+                $"https://api.openweathermap.org/data/2.5/forecast?lat={_lat}&lon={_long}&units=metric&appid=c79704f3754bff6163aa126fc6de2111");
 
 
             HttpResponseMessage response = await Client.SendAsync(request);
@@ -106,12 +108,7 @@ namespace Weather_App
         {
             this.WindowState=WindowState.Minimized;
         }
-        void TextHasChanged(object sender, TextChangedEventArgs e)
-        {
-            List<string> suggestionsList= new List<string>() {"Monte Grande", "San Francisco", "Los Angeles", "Frankfurt"  };
-
-           
-        }
+       
 
         private void minimize_MouseEnter(object sender, MouseEventArgs e)
         {
