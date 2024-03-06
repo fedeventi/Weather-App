@@ -21,7 +21,7 @@ namespace Weather_App
                 using (var context = new BaseContext(options))
                 {
 
-                    var result = context.cities.Where(x => x.Country == "Argentina").Select(x => x.City).ToList();
+                    var result = context.cities.Where(x => x.City.Contains("buenos ")).Select(x=> $"{x.City},{x.Country.Substring(0,2)} " ).ToList();
                     foreach (var city in result) 
                         Console.WriteLine(city);
 
@@ -32,14 +32,6 @@ namespace Weather_App
             catch (Exception ex) { Console.WriteLine(ex); }
         }
 
-        public void Get_Returns_Cities()
-        {
-
-            var options = new DbContextOptionsBuilder<BaseContext>().UseMySQL("server=localhost;database=world;user=root;password=fedeventi25").Options;
-            using var context = new BaseContext(options);
-            context.cities.Add(new WorldCities { City = "Buenos Aires" });
-            Console.WriteLine(context.cities.ToList().Where(x=>x.Country=="Argentina"));
-
-        }
+      
     }
 }
