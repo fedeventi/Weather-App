@@ -132,9 +132,7 @@ namespace Weather_App
         }
         public void Search()
         {
-            /*TextBlock _textblock = border.Child as TextBlock;
-            _searchedCity = _textblock.Text;
-            City.Text = _searchedCity;*/
+            
             if (UIElements.Count < 1) return;
             City.Text = UIElements.Where(x => x is TextBlock).Select(x=>((TextBlock)x).Text).ToList()[_index];
             Resize(true);
